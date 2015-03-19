@@ -14,6 +14,26 @@ class ViewController: UIViewController
     
     var userIsInTheMiddleOfTypingANumber:Bool=false
     
+    var operandStack = Array<Double>()
+    
+    @IBAction func returnKey()
+    {
+        operandStack.append(displayLabel.text)
+    }
+    
+    var displayValue:Double
+    {
+        get
+        {
+            displayLabel.text = "\(newValue)"
+            userIsInTheMiddleOfTypingANumber = false
+        }
+        set
+        {
+            return NSNumberFormatter().numberFromString(displayLabel.text!)!.doubleValue
+        }
+    }
+    
     @IBAction func appendDigit(sender: UIButton)
     {   //let means const
         let digit = sender.currentTitle! //! unwraps option to get string inside
